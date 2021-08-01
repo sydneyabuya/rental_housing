@@ -40,6 +40,9 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          <form>
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          </form>
         </ul>
 
         <!-- Right Side Of Navbar -->
