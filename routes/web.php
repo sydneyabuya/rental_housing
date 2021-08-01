@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,21 +14,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/hello', function () {
-    return 'Hello World';
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// Route::get('/about', function () {
-//     return view('pages.about');
-// });
-
-Route::get('/', 'App\Http\Controllers\PagesController@index');
+//Route::get('/', 'App\Http\Controllers\PagesController@index');
 Route::get('/about', 'App\Http\Controllers\PagesController@about');
 Route::get('/services', 'App\Http\Controllers\PagesController@services');
 Auth::routes(['verify'=>true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard')->middleware(["verified"]);
+
+require __DIR__.'/auth.php';
