@@ -38,6 +38,14 @@
                     </x-nav-link>
                 </div>
                 @endif
+
+                @if (Auth::user()->hasRole('landlord'))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                </div>
+                @endif
                 
             </div>
 

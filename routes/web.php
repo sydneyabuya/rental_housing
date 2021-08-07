@@ -53,6 +53,10 @@ Route::group(['middleware' => ['auth', 'role:propertymanager']], function() {
     Route::get('/dashboard/postrequest', 'App\Http\Controllers\DashboardController@postrequest')->name('dashboard.postrequest');
 });
 
-Route::resource('tasks', App\Http\Controllers\TaskController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('tasks', \App\Http\Controllers\TaskController::class);
+
+    Route::resource('users', \App\Http\Controllers\UsersController::class);
+});
 
 require __DIR__.'/auth.php';
