@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,5 +52,7 @@ Route::group(['middleware' => ['auth', 'role:tenant']], function() {
 Route::group(['middleware' => ['auth', 'role:propertymanager']], function() { 
     Route::get('/dashboard/postrequest', 'App\Http\Controllers\DashboardController@postrequest')->name('dashboard.postrequest');
 });
+
+Route::resource('tasks', App\Http\Controllers\TaskController::class);
 
 require __DIR__.'/auth.php';
