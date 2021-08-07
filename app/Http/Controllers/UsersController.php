@@ -29,7 +29,7 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Role::pluck('display_name', 'id');
-        return view('users.create');
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -40,7 +40,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $user=User::create($request->all());
+        $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
@@ -64,7 +65,10 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::pluck('display_name', 'id');
+
+        $user->load('roles');
+        return view('users.edit', compact('user','roles'));
     }
 
     /**
@@ -77,6 +81,7 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
+        $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index');
     }
