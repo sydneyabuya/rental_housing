@@ -48,8 +48,14 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // for tenants
-Route::group(['middleware' => ['auth', 'role:tenant']], function() { 
-    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+// Route::group(['middleware' => ['auth', 'role:tenant']], function() { 
+//     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+// });
+
+//auth route for both 
+Route::group(['middleware' => ['auth']], function() { 
+    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile')
+    ->middleware(["verified"]);
 });
 
 // for property managers

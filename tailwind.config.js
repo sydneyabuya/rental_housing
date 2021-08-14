@@ -14,7 +14,7 @@ module.exports = {
             },
             backgroundImage: theme =>({
                 'together': "url('https://images.unsplash.com/photo-1619431131082-3f8f2565b7ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG91c2VzJTIwYXBhcnRtZW50c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60')",
-            }),
+            })
         },
     },
 

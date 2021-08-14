@@ -83,7 +83,7 @@ class UsersController extends Controller
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User Updated successfully.');
     }
 
     /**
