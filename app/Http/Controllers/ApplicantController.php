@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Role;
+use App\Models\Applicant;
 
-class UsersController extends Controller
+class ApplicantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $users = User::with('roles')->get();
+        $applicant = Applicant::all();
 
-        return view('users.index', compact('users'));
+        return view('applicant.index', compact('applicant'));
     }
 
     /**
@@ -28,8 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('display_name', 'id');
-        return view('users.create', compact('roles'));
+        return view('applicant.create');
     }
 
     /**
@@ -40,10 +37,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user=User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        Applicant::create($request->all());
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('applicant.index')->with('success', 'Applicant created successfully.');
     }
 
     /**
@@ -52,9 +48,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Applicant $applicant)
     {
-        return view('users.show', compact('user'));
+        return view('applicant.show', compact('applicant'));
     }
 
     /**
@@ -63,12 +59,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Applicant $applicant)
     {
-        $roles = Role::pluck('display_name', 'id');
-
-        $user->load('roles');
-        return view('users.edit', compact('user','roles'));
+        return view('applicant.edit', compact('applicant'));
     }
 
     /**
@@ -78,12 +71,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Applicant $applicant)
     {
-        $user->update($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $applicant->update($request->all());
 
-        return redirect()->route('users.index')->with('success', 'User Updated successfully.');
+        return redirect()->route('applicant.index');
     }
 
     /**
@@ -92,10 +84,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Applicant $applicant)
     {
-        $user->delete();
+        $applicant->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('applicant.index');
     }
 }
