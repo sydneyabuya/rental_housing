@@ -23,13 +23,11 @@
                     </x-nav-link>
                 </div>
 
-                @if (Auth::user()->hasRole('tenant'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
-                        {{ __('My Profile') }}
+                    <x-nav-link :href="route('applicant.index')" :active="request()->routeIs('applicant.index')">
+                        {{ __('Applicants') }}
                     </x-nav-link>
-                </div> 
-                @endif
+                </div>
 
                 @if (Auth::user()->hasRole('propertymanager'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -65,6 +63,15 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <!-- Account Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Account') }}
+                        </div>
+
+                        <x-dropdown-link href="{{ route('dashboard.myprofile') }}">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             {{ csrf_field() }}

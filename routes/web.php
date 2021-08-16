@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,12 +43,19 @@ Auth::routes(['verify'=>true]);
 
 //auth route for both 
 Route::group(['middleware' => ['auth']], function() { 
-    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard')
+    ->middleware(["verified"]);
 });
 
 // for tenants
-Route::group(['middleware' => ['auth', 'role:tenant']], function() { 
-    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+// Route::group(['middleware' => ['auth', 'role:tenant']], function() { 
+//     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+// });
+
+//auth route for both 
+Route::group(['middleware' => ['auth']], function() { 
+    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile')
+    ->middleware(["verified"]);
 });
 
 // for property managers
@@ -57,6 +67,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
 
     Route::resource('users', \App\Http\Controllers\UsersController::class);
+
+    Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
 });
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/profile', function () {
+    // Only verified users may access this route...
+})->middleware('verified');
+
+
 
 require __DIR__.'/auth.php';

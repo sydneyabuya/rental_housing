@@ -78,7 +78,7 @@ class UsersController extends Controller
     {
         $user->update($request->all());
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User Updated successfully.');
     }
 
     /**
