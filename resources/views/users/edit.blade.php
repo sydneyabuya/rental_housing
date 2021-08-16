@@ -41,9 +41,9 @@
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="roles" class="block font-medium text-sm text-gray-700">Roles</label>
                             <select name="roles[]" id="roles" class="form-multiselect block rounded-md shadow-sm mt-1 w-full" multiple="multiple">
-                                @foreach($roles as $id => $role)
+                                @foreach($user->roles as $id => $role)
                                     <option value="{{ $id }}"{{ in_array($id, old('roles', $user->roles->pluck('id')->toArray())) ? ' selected' : '' }}>
-                                        {{ $role }}
+                                        {{ $role->display_name }}
                                     </option>
                                 @endforeach
                             </select>
