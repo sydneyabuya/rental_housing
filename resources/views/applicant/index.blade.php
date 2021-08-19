@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Applicants
+            My Application
         </h2>
     </x-slot>
 
@@ -24,7 +24,7 @@
                             Full name
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            Margot Foster
+                            {{ auth()->user()->name }}
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -32,7 +32,7 @@
                             Application for
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            Backend Developer
+                            Tenant
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -40,7 +40,7 @@
                             Email address
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            margotfoster@example.com
+                            {{ auth()->user()->email }}
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -112,6 +112,70 @@
                         </dd>
                     </div>
                 </dl>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200 w-full">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" width="50"
+                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            ID
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Name
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Email
+                                        </th>
+                                        
+                                        <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($applicant as $applicant)
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $applicant->id }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $applicant->name }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $applicant->email }}
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="{{ route('applicant.show', $applicant->id) }}"
+                                                    class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+                                                <a href="{{ route('applicant.edit', $applicant->id) }}"
+                                                    class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                                <form class="inline-block"
+                                                    action="{{ route('applicant.destroy', $applicant->id) }}" method="POST"
+                                                    onsubmit="return confirm('Are you sure?');">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="submit"
+                                                        class="text-red-600 hover:text-red-900 mb-2 mr-2"
+                                                        value="Delete">
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 </x-app-layout>

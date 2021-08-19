@@ -13,9 +13,16 @@ class CreateWorkordersTable extends Migration
      */
     public function up()
     {
-        Schema::create('workorders', function (Blueprint $table) {
-            $table->id();
+        Schema::create('worders', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->string('phone');
+            $table->unsignedBigInteger('vendor_id');
             $table->timestamps();
+
+            $table->foreign('vendor_id')->references('id')->on('vendor')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['user_id', 'vendor_id','phone']);
         });
     }
 
@@ -26,6 +33,6 @@ class CreateWorkordersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workorders');
+        Schema::dropIfExists('worders');
     }
 }

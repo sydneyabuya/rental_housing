@@ -15,10 +15,14 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
             $table->string('phone');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['id', 'user_id','name','phone','created_at','udpated_at']);
         });
     }
 

@@ -16,7 +16,7 @@ class TenantController extends Controller
     {
         $tenant = Tenant::all();
 
-        return view('admin.tenant.index', compact('tenant'));
+        return view('admin.tenants.index', compact('tenant'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('admin.tenant.create');
+        return view('admin.tenants.create');
     }
 
     /**
@@ -39,12 +39,12 @@ class TenantController extends Controller
     {
         Tenant::create($request->all());
 
-        return redirect()->route('admin.tenant.index')->with('success', 'Tenant Added successfully.');
+        return redirect()->route('admin.tenants.index')->with('success', 'Tenant Added successfully.');
     }
 
     public function show(Tenant $tenant)
     {
-        return view('admin.tenant.show', compact('tenant'));
+        return view('admin.tenants.show', compact('tenant'));
     }
 
     /**
@@ -55,7 +55,7 @@ class TenantController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        return view('admin.tenant.edit', compact('tenant'));
+        return view('admin.tenants.edit', compact('tenant'));
     }
 
     /**
@@ -69,7 +69,7 @@ class TenantController extends Controller
     {
         $tenant->update($request->all());
 
-        return redirect()->route('admin.tenant.index');
+        return redirect()->route('admin.tenants.index');
     }
 
     /**
@@ -82,6 +82,6 @@ class TenantController extends Controller
     {
         $tenant->delete();
 
-        return redirect()->route('admin.tenant.index');
+        return redirect()->route('admin.tenants.index');
     }
 }

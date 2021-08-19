@@ -13,9 +13,15 @@ class CreateTenantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tenants', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tenant', function (Blueprint $table) {
+            $table->string('phone');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['user_id','phone']);
         });
     }
 
@@ -26,6 +32,6 @@ class CreateTenantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('tenant');
     }
 }
