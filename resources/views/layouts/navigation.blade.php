@@ -6,7 +6,9 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        {{-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> --}}
+                        <img src="https://img.icons8.com/emoji/50/000000/house-emoji.png"/>
+
                     </a>
                 </div>
 
@@ -43,6 +45,42 @@
                         {{ __('Users') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('property.index')" :active="request()->routeIs('property.*')">
+                        {{ __('Properties') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('tenants.index')" :active="request()->routeIs('tenants.*')">
+                        {{ __('Tenants') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('manager.index')" :active="request()->routeIs('manager.*')">
+                        {{ __('Property Managers') }}
+                    </x-nav-link>
+                </div>
+
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.*')">
+                        {{ __('Accounts') }}
+                    </x-nav-link>
+                </div> --}}
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vendor.index')" :active="request()->routeIs('vendor.*')">
+                        {{ __('Vendors') }}
+                    </x-nav-link>
+                </div>
+
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('workorder.index')" :active="request()->routeIs('workorder.*')">
+                        {{ __('Work Order') }}
+                    </x-nav-link>
+                </div> --}}
                 @endif
                 
             </div>
