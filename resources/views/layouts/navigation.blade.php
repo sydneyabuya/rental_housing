@@ -46,7 +46,7 @@
                     <x-dropdown >
                         <x-slot name="trigger">
                             <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div><a href="">Renalts</a></div>
+                                <div><a href="">Rentals</a></div>
     
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -59,23 +59,29 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Rentals') }}
                             </div>
     
                             <x-dropdown-link href="{{ route('dashboard.myprofile') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('property.index')" :active="request()->routeIs('property.*')">
+                                {{ __('Properties') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('tenants.index')" :active="request()->routeIs('tenants.*')">
+                                {{ __('Tenants') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('manager.index')" :active="request()->routeIs('manager.*')">
+                                {{ __('Property Managers') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('vendor.create')" :active="request()->routeIs('vendor.*')">
+                                {{ __('Vendors') }}
+                            </x-dropdown-link>
     
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                {{ csrf_field() }}
-    
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
                         </x-slot>
                     </x-dropdown>
             
@@ -84,19 +90,19 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('property.index')" :active="request()->routeIs('property.*')">
-                        {{ __('Properties') }}
+                        {{ __('Accounting') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('tenants.index')" :active="request()->routeIs('tenants.*')">
-                        {{ __('Tenants') }}
+                        {{ __('Communication') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('manager.index')" :active="request()->routeIs('manager.*')">
-                        {{ __('Property Managers') }}
+                        {{ __('Workorder') }}
                     </x-nav-link>
                 </div>
 
@@ -105,12 +111,6 @@
                         {{ __('Accounts') }}
                     </x-nav-link>
                 </div> --}}
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('vendor.create')" :active="request()->routeIs('vendor.*')">
-                        {{ __('Vendors') }}
-                    </x-nav-link>
-                </div>
 
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('workorder.index')" :active="request()->routeIs('workorder.*')">
