@@ -25,16 +25,24 @@
                     </x-nav-link>
                 </div>
 
+                @if (Auth::user()->hasRole('tenant'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
                         {{ __('Applicants') }}
                     </x-nav-link>
                 </div>
+                @endif
 
                 @if (Auth::user()->hasRole('propertymanager'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard.postrequest')" :active="request()->routeIs('dashboard.postrequest')">
                         {{ __('Request') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applicant.index')" :active="request()->routeIs('applicant.*')">
+                        {{ __('Applicants') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -87,6 +95,11 @@
             
                 
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applicant.index')" :active="request()->routeIs('applicant.*')">
+                        {{ __('Applicants') }}
+                    </x-nav-link>
+                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('property.index')" :active="request()->routeIs('property.*')">
@@ -105,18 +118,6 @@
                         {{ __('Workorder') }}
                     </x-nav-link>
                 </div>
-
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.*')">
-                        {{ __('Accounts') }}
-                    </x-nav-link>
-                </div> --}}
-
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('workorder.index')" :active="request()->routeIs('workorder.*')">
-                        {{ __('Work Order') }}
-                    </x-nav-link>
-                </div> --}}
                 @endif
                 
             </div>

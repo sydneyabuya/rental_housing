@@ -8,6 +8,12 @@
 
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+        @if (Auth::user()->hasRole('landlord'))
+        <div class="block mb-8">
+            <a href="{{ route('applicant.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+        </div>
+        @endif
+
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -28,8 +34,12 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 <div>
-                                    <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                        value="{{ auth()->user()->name }}" autofocus />
+                                    <input type="text" name="name" id="name" type="text"
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                        value="{{ old('name', '') }}" />
+                                    @error('name')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </dd>
                         </div>
@@ -47,8 +57,12 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 <div>
-                                    <x-input id="name" class="block mt-1 w-full" type="text" name="email"
-                                        value="{{ auth()->user()->email }}" autofocus />
+                                    <input type="text" name="email" id="email" type="text"
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                        value="{{ old('email', '') }}" />
+                                    @error('email')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </dd>
                         </div>
@@ -58,7 +72,12 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 <div>
-                                    <x-input id="name" class="block mt-1 w-full" type="text" name="phone" autofocus />
+                                    <input type="text" name="ephone" id="phone" type="text"
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                        value="{{ old('phone', '') }}" />
+                                    @error('phone')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </dd>
                         </div>
@@ -127,10 +146,11 @@
                     <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <button
                             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                            Create
+                            Apply
                         </button>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
 </x-app-layout>

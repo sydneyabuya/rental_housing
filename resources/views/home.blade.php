@@ -17,7 +17,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="antialiased">
+<body >
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="relative bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 shadow-sm">
@@ -26,8 +26,7 @@
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
                         <span class="sr-only">Workflow</span>
-                        <img class="h-8 w-auto sm:h-10"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+                        <img src="https://img.icons8.com/emoji/50/000000/house-emoji.png"/>
                     </a>
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
@@ -36,11 +35,7 @@
                         aria-expanded="false">
                         <span class="sr-only">Open menu</span>
                         <!-- Heroicon name: outline/menu -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                        <img src="https://img.icons8.com/emoji/50/000000/house-emoji.png"/>
                     </button>
                 </div>
                 <nav class="hidden md:flex space-x-10">
