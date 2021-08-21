@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tenant;
+use App\Models\User;
 
 class TenantController extends Controller
 {
@@ -15,8 +16,10 @@ class TenantController extends Controller
     public function index()
     {
         $tenant = Tenant::all();
+        $tenant = Tenant::with('users')->get();
 
         return view('admin.tenants.index', compact('tenant'));
+
     }
 
     /**
@@ -26,7 +29,8 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('admin.tenants.create');
+        $users = User::pluck('name', 'id');
+        return view('admin.tenants.create', compact('users'));
     }
 
     /**
@@ -37,7 +41,13 @@ class TenantController extends Controller
      */
     public function store(Request $request)
     {
-        Tenant::create($request->all());
+        //Tenant::create($request->all());
+        $tenant=Tenant::create([
+            'phone' => request('phone'),
+            'user_id' => request('user->show')
+        ]);
+
+        $tenant->users()->sync($request->input('users', []));
 
         return redirect()->route('admin.tenants.index')->with('success', 'Tenant Added successfully.');
     }
@@ -55,6 +65,10 @@ class TenantController extends Controller
      */
     public function edit(Tenant $tenant)
     {
+
+        $users = User::pluck('name', 'id');
+
+        $tenant->load('users');
         return view('admin.tenants.edit', compact('tenant'));
     }
 
@@ -68,6 +82,8 @@ class TenantController extends Controller
     public function update(Request $request, Tenant $tenant)
     {
         $tenant->update($request->all());
+        
+        $tenant->users()->sync($request->input('users', []));
 
         return redirect()->route('admin.tenants.index');
     }

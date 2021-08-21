@@ -29,7 +29,7 @@
             @endif
 
             <div class="block mb-8">
-                <a href="{{ route('tenants.index') }}"
+                <a href="{{ route('tenants.create') }}"
                     class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add  Tenant</a>
             </div>
             <div class="flex flex-col">
@@ -68,12 +68,12 @@
                                             </td>
                 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <a href="{{ route('users.show', $user->id) }}"
+                                                <a href="{{ route('tenants.show', $tenant->user_id) }}"
                                                     class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                <a href="{{ route('tenants.edit', $tenant->user_id) }}"
                                                     class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
                                                 <form class="inline-block"
-                                                    action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                                    action="{{ route('tenants.destroy', $tenant->user_id) }}" method="POST"
                                                     onsubmit="return confirm('Are you sure?');">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
