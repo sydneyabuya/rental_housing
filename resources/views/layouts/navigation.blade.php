@@ -20,11 +20,6 @@
                 </div>
 
                 @if (Auth::user()->hasRole('tenant'))
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
-                        {{ __('Applicants') }}
-                    </x-nav-link>
-                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
@@ -33,8 +28,14 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.postrequest')" :active="request()->routeIs('dashboard.postrequest')">
+                        {{ __('Request') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
-                        {{ __('Requests') }}
+                        {{ __('Apply') }}
                     </x-nav-link>
                 </div>
 
@@ -98,7 +99,7 @@
                                 {{ __('Property Managers') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('vendor.create')" :active="request()->routeIs('vendor.*')">
+                            <x-dropdown-link :href="route('vendor.index')" :active="request()->routeIs('vendor.*')">
                                 {{ __('Vendors') }}
                             </x-dropdown-link>
     
