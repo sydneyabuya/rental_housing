@@ -420,7 +420,7 @@
             </div>
 
             <div class=" lg:absolute lg:right-40 lg:w-1/3 -mt-96 h-96">
-                <img class="h-50 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+                <img class=" h-full w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
                     src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
                     alt="">
             </div>

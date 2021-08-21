@@ -14,4 +14,17 @@
             </div>
         </div>
     </div>
+
+    <div class="grid grid-cols-3 gap-4 font-semibold px-12 rounded-xl">
+        <div class="bg-purple-500 rounded-xl">
+            1
+            You're logged in as admin!
+        </div>
+        <div class="bg-purple-500 rounded-xl">2</div>
+        <div class="bg-purple-500 rounded-md">3</div>
+        <div class="col-span-2 font-semibold bg-purple-500">4</div>
+        <div class="bg-purple-500 font-semibold">5</div>
+        <div class="bg-purple-500">6</div>
+        <div class="col-span-2 font-semibold bg-purple-500">7</div>
+    </div>
 </x-app-layout>
