@@ -19,16 +19,28 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
-                        {{ __('Tasks') }}
-                    </x-nav-link>
-                </div>
-
                 @if (Auth::user()->hasRole('tenant'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
                         {{ __('Applicants') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
+                        {{ __('Payment') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
+                        {{ __('Requests') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applicant.create')" :active="request()->routeIs('applicant.*')">
+                        {{ __('Contact Us') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -119,6 +131,12 @@
                     </x-nav-link>
                 </div>
                 @endif
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
+                        {{ __('Tasks') }}
+                    </x-nav-link>
+                </div>
                 
             </div>
 
