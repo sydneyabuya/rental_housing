@@ -16,8 +16,8 @@
     </div>
 
     <div class="grid grid-rows-3 grid-flow-col gap-4 px-12 font-semibold">
-        <div class="row-span-3 ...">1</div>
-        <div class="col-span-2 ...">2</div>
-        <div class="row-span-2 col-span-2 ...">3</div>
+        <div class="row-span-3 bg-green-500">1</div>
+        <div class="col-span-2 bg-green-500">2</div>
+        <div class="row-span-2 col-span-2 bg-green-500">3</div>
       </div>
 </x-app-layout>

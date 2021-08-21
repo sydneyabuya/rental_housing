@@ -32,7 +32,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="password" class="block font-medium text-sm text-gray-700">Password</label>
-                            <input type="password" name="password" id="password" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="password" name="password" id="password" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('password', $user->password) }}" />
                             @error('password')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
