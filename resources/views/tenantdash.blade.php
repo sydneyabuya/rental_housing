@@ -14,42 +14,75 @@
             </div>
         </div>
     </div>
+    
+    <div class="grid grid-cols-3 gap-4 px-24 border-l-2 border-blue-600 ">
+      
+      <div class="col-span-2 bg-white rounded-xl shadow-lg border-l-2 border-blue-600">
+        <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4 py-10">
+          
+          <div>
+            <div class=" text-2xl font-medium text-black">Your Current Balance is</div>
+            <p class="text-gray-500 text-2xl">$0.00</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="grid grid-flow-col grid-rows-2 grid-cols-3 gap-4 px-12">
-        <div class="bg-red-500">
-          1
-          <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
-            <img class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG91c2UlMjBleHRlcmlvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt="" width="384" height="512">
-            <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
-              <blockquote>
-                <p class="text-lg font-semibold">
-                  “Tailwind CSS is the only framework that I've seen scale
-                  on large teams. It’s easy to customize, adapts to any design,
-                  and the build size is tiny.”
-                </p>
-              </blockquote>
-              <figcaption class="font-medium">
-                <div class="text-cyan-600">
-                  Sarah Dayan
-                </div>
-                <div class="text-gray-500">
-                  Staff Engineer, Algolia
-                </div>
-              </figcaption>
+      <div class="bg-white rounded-xl shadow-lg border-l-2 border-blue-600">
+        <div class="col-span-2 bg-white rounded-xl shadow-lg">
+          <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4">
+            
+            <div>
+              <div class=" text-lg font-medium text-black">Account Information</div>
+              <div class=" text-sm font-medium text-gray-500">Account Number</div>
+              <p class="text-black font-normal text-xs">2345678</p>
+              <div class=" text-sm font-medium text-gray-500">Account Number</div>
+              <p class="text-black font-normal text-xs">2345678</p>
+              <div class=" text-sm font-medium text-gray-500">Account Number</div>
+              <p class="text-black font-normal text-xs">2345678</p>
+              <div class=" text-sm font-medium text-gray-500">Account Number</div>
+              <p class="text-black font-normal text-xs">2345678</p>
+              <div class=" text-sm font-medium text-gray-500">Account Number</div>
+              <p class="text-black font-normal text-xs">2345678</p>
             </div>
-        </figure>
+          </div>
         </div>
-        <div class="col-start-3 bg-red-800">
-          2
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg border-l-2 border-blue-600">2
+        <div class="col-span-2 bg-white rounded-xl shadow-lg">
+        <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4">
+          
+          <div class="px-5 py-1">
+            <div class=" text-lg font-bold text-black">Open Requests</div>
+              <div class="h-12 w-1/3">
+                <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/build/v11/24px.svg" alt="ertyu">
+              </div>
+              <div class=" text-lg font-semibold text-black">How can we help you?</div>
+              <p class="text-black font-normal text-xs"></p>
+              <button class="bg-green-500 active:bg-green-700 rounded-full py-3 px-6 hover:bg-green-600">
+                Create Request
+              </button>
+          </div>
         </div>
-        <div class="bg-green-400">
-          3
+      </div>
+
+      </div>
+      <div class="bg-white rounded-xl shadow-lg border-l-2 border-blue-600">3
+        <div class="col-span-2 bg-white rounded-xl shadow-lg">
+          <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4">
+            
+            <div class="px-5 py-1">
+              <div class=" text-base font-bold text-black">Announcements</div>
+              <br>
+              <div class="  text-base font-medium text-black">View your Announcements here</div>
+              <br>
+              <div class=" text-base font-medium text-black"></div>
+              <button class="bg-green-500 active:bg-green-700 rounded-full py-3 px-6 hover:bg-green-600">
+                Announcements
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="bg-blue-700">
-          4
-        </div>
-        <div class="row-start-1 col-start-2 col-span-2 bg-yellow-500">
-          5
-        </div>
-    </div>
+      </div>
+
 </x-app-layout>
