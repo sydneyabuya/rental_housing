@@ -5,17 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 font-semibold">
-                    You're logged in as a tenant!
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <div class="grid grid-cols-3 gap-4 px-24 border-l-2 border-blue-600 ">
+    <div class="grid grid-cols-3 gap-4 px-24 border-l-2 border-blue-600 py-12">
       
       <div class="col-span-2 bg-white rounded-xl shadow-lg border-l-2 border-blue-600">
         <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4 py-10">
