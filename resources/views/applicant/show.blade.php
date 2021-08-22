@@ -7,7 +7,7 @@
     </x-slot>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto py-12 sm:px-6 lg:px-24">
         <div class="block mb-8">
             <a href="{{ route('applicant.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
         </div>

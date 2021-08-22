@@ -7,7 +7,7 @@
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-            @if ($message = Session::get('success'))
+            {{-- @if ($message = Session::get('success'))
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -17,7 +17,8 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif --}}
+            <x-success-message/>
 
             <div class="block mb-8">
                 <a href="{{ route('users.create') }}"

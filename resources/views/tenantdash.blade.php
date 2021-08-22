@@ -6,7 +6,7 @@
     </x-slot>
 
     
-    <div class="grid grid-cols-3 gap-4 px-24 border-l-2 border-blue-600 py-12">
+    <div class="grid grid-cols-3 gap-4 sm:px-6 lg:px-24 border-l-2 border-blue-600 py-12">
       
       <div class="col-span-2 bg-white rounded-xl shadow-lg border-l-2 border-blue-600">
         <div class=" p-3 max-w-sm mx-auto bg-white rounded-xl flex items-center space-x-4 py-10">
@@ -45,7 +45,7 @@
           
           <div class="px-5 py-1">
             <div class=" text-lg font-bold text-black">Open Requests</div>
-              <div class="h-12 w-1/3">
+              <div class="h-20 w-20">
                 <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/build/v11/24px.svg" alt="ertyu">
               </div>
               <div class=" text-lg font-semibold text-black">How can we help you?</div>
@@ -71,6 +71,9 @@
               <button class="bg-green-500 active:bg-green-700 rounded-full py-3 px-6 hover:bg-green-600">
                 Announcements
               </button>
+              <x-button>
+                here
+              </x-button>
             </div>
           </div>
         </div>

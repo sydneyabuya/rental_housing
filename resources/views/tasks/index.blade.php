@@ -5,13 +5,18 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if (session('status') == 'task-created')
-                <div class="mb-4 font-medium text-sm text-green-600">
+    <div class="py-12 px-24">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-24">
+             {{-- @if (session('status') == 'task-created')
+                {{-- <div class="mb-4 font-medium text-sm text-green-600">
+                    
                     {{ __('Task Created Successfully.') }}
-                </div>
-            @endif
+                    
+                </div> 
+                <x-success-message />
+            @endif  --}}
+
+            <x-success-message />
             
             <div class="block mb-8">
                 <a href="{{ route('tasks.create') }}"

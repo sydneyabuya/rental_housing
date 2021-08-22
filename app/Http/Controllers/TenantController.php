@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateTenantRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Tenant;
 use App\Models\User;
 
@@ -47,6 +49,8 @@ class TenantController extends Controller
             'user_id' => request('user->show')
         ]);
 
+        //$auth()->user()->store($request->only('phone,user_id'));
+
         $tenant->users()->sync($request->input('users', []));
 
         return redirect()->route('admin.tenants.index')->with('success', 'Tenant Added successfully.');
@@ -63,12 +67,13 @@ class TenantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tenant $tenant)
+  //  public function edit(Tenant $tenant)
+    public function edit(UpdateTenantRequest $request)
     {
 
         $users = User::pluck('name', 'id');
 
-        $tenant->load('users');
+        //$tenant->load('users');
         return view('admin.tenants.edit', compact('tenant'));
     }
 

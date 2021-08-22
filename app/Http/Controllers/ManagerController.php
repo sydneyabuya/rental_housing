@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\UpdateManagerRequest;
 use App\Models\Manager;
 
 use Illuminate\Http\Request;
@@ -53,9 +55,15 @@ class ManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manager $manager)
+    // public function edit(Manager $manager)
+    // {
+    //     //return view('admin.manager.edit', compact('manager'));
+    // }
+
+    public function edit(UpdateManagerRequest $request)
     {
-        return view('admin.manager.edit', compact('manager'));
+        //return view('admin.manager.edit', compact('manager'));
+    
     }
 
     /**
