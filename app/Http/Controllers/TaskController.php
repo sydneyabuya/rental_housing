@@ -82,7 +82,7 @@ class TaskController extends Controller
     {
         $task->update($request->all());
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.index')->with('message', 'Task Updated Succesfully');
     }
 
     /**

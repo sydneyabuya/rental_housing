@@ -41,7 +41,7 @@ class ManagerController extends Controller
     {
         Manager::create($request->all());
 
-        return redirect()->route('admin.manager.index')->with('success', 'Property Manager created successfully.');
+        return redirect()->route('admin.manager.index')->with('message', 'Property Manager created successfully.');
     }
 
     public function show(Manager $manager)
@@ -55,15 +55,11 @@ class ManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit(Manager $manager)
-    // {
-    //     //return view('admin.manager.edit', compact('manager'));
-    // }
-
-    public function edit(UpdateManagerRequest $request)
-    {
-        //return view('admin.manager.edit', compact('manager'));
     
+
+    public function edit(Manager $manager)
+    {
+        return view('admin.manager.edit', compact('manager'));
     }
 
     /**
@@ -77,7 +73,7 @@ class ManagerController extends Controller
     {
         $manager->update($request->all());
 
-        return redirect()->route('admin.manager.index');
+        return redirect()->route('admin.manager.index')->with('message', 'Property Manager Updated successfully.');
     }
 
     /**
