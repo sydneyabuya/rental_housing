@@ -16,7 +16,7 @@ class VendorController extends Controller
     public function index()
     {
         $vendor = Vendor::all();
-
+       //return view('admin.vendor.index');
         return view('admin.vendor.index', compact('vendor'));
     }
 
@@ -38,9 +38,20 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        Vendor::create($request->all());
+        // $request->validate([
+        //     'name' => 'required',
+        //     'phone' => 'required',
+        //     'specialization' => 'required'
+        // ]);
+        // Vendor::create($request->all());
+        $vendor= new Vendor;
+        $vendor->name=$request->name;
+        $vendor->phone=$request->phone;
+        $vendor->specialization=$request->input('specialization');
+        $vendor->save();
 
-        return redirect()->route('admin.vendor.index')->with('success', 'Vendor Added successfully.');
+
+        return redirect()->route('vendor.index')->with('message', 'Vendor Added successfully.');
     }
 
     public function show(Vendor $vendor)

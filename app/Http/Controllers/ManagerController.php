@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateManagerRequest;
+use App\Models\User;
 use App\Models\Manager;
 
 use Illuminate\Http\Request;
@@ -16,9 +17,17 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        $manager = Manager::all();
-
-        return view('admin.manager.index', compact('manager'));
+        //$manager = Manager::all();
+        //$users = User::all();
+        //return view('admin.manager.index', compact('manager'));
+        //$users = User::with('roles')->get();
+        // $users = User::with(['roles' => function($q){
+        //     $q->where('name', 'propertymanager');
+        // }])->get();
+        $users=User::whereHas('roles', function($q) {
+            $q->whereName('propertymanager');
+        })->get();
+        return view('admin.manager.index', compact('users'));
     }
 
     /**

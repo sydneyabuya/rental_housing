@@ -17,10 +17,14 @@ class TenantController extends Controller
      */
     public function index()
     {
-        $tenant = Tenant::all();
-        $tenant = Tenant::with('users')->get();
+        // $tenant = Tenant::all();
+        // $tenant = Tenant::with('users')->get(); 
+        $users=User::whereHas('roles', function($q) {
+            $q->whereName('tenant');
+        })->get();
+        return view('admin.tenants.index', compact('users'));
 
-        return view('admin.tenants.index', compact('tenant'));
+        //return view('admin.tenants.index', compact('tenant'));
 
     }
 
