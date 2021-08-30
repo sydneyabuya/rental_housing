@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class MpesaController extends Controller
 {
+<<<<<<< HEAD
     /** Lipa na M-PESA password **/
     public function getPassword()
     {
@@ -14,6 +15,17 @@ class MpesaController extends Controller
         $BusinessShortCode = 174379; //This is the test business shortcode we are going to use. 
         $password = base64_encode($BusinessShortCode.$passkey.$timestamp);
         return $password;
+=======
+        /** Lipa na M-PESA password **/
+    public function getPassword()
+    {
+        $timestamp = Carbon::rawParse('now')->format('YmdHms'); //Helps us get current date and time
+        $passkey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";  //Pass key from the Daraja app. See https://developer.safaricom.co.ke/test_credentials
+        $BusinessShortCode = 174379; // See https://developer.safaricom.co.ke/test_credentials
+        $password = base64_encode($BusinessShortCode.$passkey.$timestamp);
+        return $password;
+        
+>>>>>>> df3fe06f16b331a88543f070390532b973eeb30b
     }
     /** Lipa na M-PESA STK Push method **/
     public function stkPushRequest(Request $request)
@@ -37,9 +49,15 @@ class MpesaController extends Controller
             'PartyA' => $phone, 
             'PartyB' => 174379,
             'PhoneNumber' => $phone,
+<<<<<<< HEAD
             'CallBackURL' => 'https://mfc.ke/confirm-request.php',
             'AccountReference' => "Mediaforce Communications",
             'TransactionDesc' => "Testing stk push on sandbox"
+=======
+            'CallBackURL' => 'https://en64q2ulpppcq5v.m.pipedream.net',
+            'AccountReference' => "Rently",
+            'TransactionDesc' => "Pay rent"
+>>>>>>> df3fe06f16b331a88543f070390532b973eeb30b
         ];
         $data_string = json_encode($curl_post_data);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -51,8 +69,13 @@ class MpesaController extends Controller
 
     public function generateAccessToken()
     {
+<<<<<<< HEAD
         $consumer_key= "AbQwXHCQlpU6EPMvLbOVRMa88peg0vsU";
         $consumer_secret= "lcAi6BoQsUtiWpwH";
+=======
+        $consumer_key= "OneW9Z7Id2tRiEQiVz2JsMj3iuqcjtwV";
+        $consumer_secret= "73AeO11ViwlrjvJj";
+>>>>>>> df3fe06f16b331a88543f070390532b973eeb30b
         $credentials = base64_encode($consumer_key.":".$consumer_secret);
         $url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
         $curl = curl_init();
@@ -65,4 +88,8 @@ class MpesaController extends Controller
         $access_token=json_decode($curl_response);
         return $access_token->access_token;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> df3fe06f16b331a88543f070390532b973eeb30b
 }
