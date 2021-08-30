@@ -59,14 +59,22 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // for property managers
-Route::group(['middleware' => ['auth', 'role:propertymanager']], function() { 
+Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard/postrequest', 'App\Http\Controllers\DashboardController@postrequest')->name('dashboard.postrequest');
 });
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
 
-    Route::resource('users', \App\Http\Controllers\UsersController::class);
+    Route::resource('users', \App\Http\Controllers\UsersController::class); 
+
+    Route::resource('manager', \App\Http\Controllers\ManagerController::class);
+
+    Route::resource('vendor', \App\Http\Controllers\VendorController::class);
+
+    Route::resource('property', \App\Http\Controllers\PropertyController::class);
+
+    Route::resource('tenants', \App\Http\Controllers\TenantController::class); 
 
     Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
 });
