@@ -85,9 +85,9 @@ Route::get('/profile', function () {
     // Only verified users may access this route...
 })->middleware('verified');
 
-Route::post('v1/access/token', 'MpesaController@generateAccessToken');
-Route::post('v1/mfc/stk/push', 'MpesaController@stkPushRequest');
+//Route::post('v1/access/token', 'MpesaController@generateAccessToken');
+//Route::post('v1/mfc/stk/push', 'MpesaController@stkPushRequest');
 
 
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
