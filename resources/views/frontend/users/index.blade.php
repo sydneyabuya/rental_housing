@@ -38,6 +38,9 @@
                                         {{ trans('cruds.user.fields.approved') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.user.fields.verified') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.user.fields.roles') }}
                                     </th>
                                     <th>
@@ -63,6 +66,10 @@
                                         <td>
                                             <span style="display:none">{{ $user->approved ?? '' }}</span>
                                             <input type="checkbox" disabled="disabled" {{ $user->approved ? 'checked' : '' }}>
+                                        </td>
+                                        <td>
+                                            <span style="display:none">{{ $user->verified ?? '' }}</span>
+                                            <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
                                         </td>
                                         <td>
                                             @foreach($user->roles as $key => $item)
