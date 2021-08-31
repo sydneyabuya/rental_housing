@@ -38,6 +38,16 @@
                       </div>
                     </div>
                   </div>
+                  <div class="container">
+			              <h1>Payment</h1>
+		              	<form >
+				              Phone Number:<br>
+				            <input type="number" name="phone" placeholder="0700711233" /><br>
+                    <input type="amount" name="amount" placeholder="amount"/><br>
+				            <input type="submit" name="submit" value="pay"/><br>
+                    </form>
+			
+		              </div>
             </div>
         </div>
     </div>

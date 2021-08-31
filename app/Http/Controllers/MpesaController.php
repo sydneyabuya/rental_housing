@@ -4,89 +4,67 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class MpesaController extends Controller
 {
-    //getting access token
-    public function getAccessToken(){
-        $url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
-        $curl = curl_init($url);
-        curl_setopt_array(
-            $curl,
-            array(
-                CURLOPT_HTTPHEADER => ['Content-Type: application/json; charset = utf8'],
-                CURLOPT_RETURNTRANSFER =>true,
-                CURLOPT_HEADER => false,
-                CURLOPT_USERPWD=>env('MPESA_CONSUMER_KEY'). ':' .env('MPESA_CONSUMER_SECRET')
-            )
-        );
-        $response = json_decode(curl_exec($curl));
-        curl_close($curl);
-        return $response->access_token;
+  /** Lipa na M-PESA password **/
+    public function getPassword()
+    {
+        $timestamp = Carbon::rawParse('now')->format('YmdHms'); //Helps us get current date and time
+        $passkey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";  //Pass key from the Daraja app. See https://developer.safaricom.co.ke/test_credentials
+        $BusinessShortCode = 174379; //This is the test business shortcode we are going to use. See https://developer.safaricom.co.ke/test_credentials
+        $password = base64_encode($BusinessShortCode.$passkey.$timestamp);
+        return $password;
     }
-    //stk push
-    public function stkPush(Request $request){
-        $timestamp = date('YmdHis');
-        $password = base64_encode(env('MPESA_SHORTCODE').env('MPESA_PASS_KEY').$timestamp);
-        $curl_post_data = array(
-            'BusinessShortCode' => env('MPESA_SHORTCODE'),
-            'Password' => $password,
-            'Timestamp' => $timestamp,
-            'TransactionType' => 'CustomerPayBillOnline',
-            'Amount' => $request->amount,
-            'PartyA' => $request->phone,
-            'PartyB' => env('MPESA_SHORTCODE'),
-            'PhoneNumber' => $request->phone,
-            'CallBackURL' => env('MPESA_TEST_URL').'/api/stkpush',
-            'AccountReference' => $request->account,
-            'TransactionDesc' => $request->account
-          );
-          $url = '/stkpush/v1/processrequest';
+    /** Lipa na M-PESA STK Push method **/
+    public function stkPushRequest(Request $request)
+    {
+        $phone = $request->phone_number;  //We use request to get the phone number that the user inputs for the form.
+        $phone = (substr($phone, 0, 1) == "+") ? str_replace("+", "", $phone) : $phone;
+        $phone = (substr($phone, 0, 1) == "0") ? preg_replace("/^0/", "254", $phone) : $phone;
+        $phone = (substr($phone, 0, 1) == "7") ? "254{$phone}" : $phone;
 
-        $response = $this->makeHttp($url, $curl_post_data);
-
-        return $response;
-
-    }
-    //simulate transaction
-    public function simulateTransaction(Request $request){
-        $body = array(
-            'ShortCode'=>env('MPESA_SHORTCODE'),
-            'Msisdn'=>254708374149,
-            'Amount'=>$request->amount,
-            'BillRefNumber'=>$request->account,
-            'CommandID'=>'CustomerPayBillOnline' 
-        );
-        $url='/c2b/v1/simulate';
-        $response = $this->makeHttp($url,$body);
-        return $response;
-    }
-    //Register URL
-    public function registerURL(){
-        $body = array(
-            'ShortCode' => env('MPESA_SHORTCODE'),
-            'ResponseType' => 'Completed',
-            'ConfirmationURL' => env('MPESA_TEST_URL').'/api/confirmation',
-            'ValidationURL' => env('MPESA_TEST_URL').'/api/validation'
-        );
-        $url = '/c2b/v1/registerurl';
-        $response = $this->makeHttp($url, $body);
-        return $response;
-    }
-    public function makeHttp($url, $body){
-        $url = 'https://sandbox.safaricom.co.ke/mpesa/'.$url;
+        $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
-        curl_setopt_array(
-            $curl,
-            array(
-                    CURLOPT_URL => $url,
-                    CURLOPT_HTTPHEADER => array('Content-Type:application/json','Authorization:Bearer '.$this->getAccessToken()),
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_POST => true,
-                    CURLOPT_POSTFIELDS => json_encode($body)
-                )
-        );
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$this->generateAccessToken()));
+        $curl_post_data = [
+            //Use valid values for the parameters below
+            'BusinessShortCode' => 174379,
+            'Password' => $this->getPassword(),
+            'Timestamp' => Carbon::rawParse('now')->format('YmdHms'),
+            'TransactionType' => 'CustomerPayBillOnline',
+            'Amount' => 1,
+            'PartyA' => $phone, 
+            'PartyB' => 174379,
+            'PhoneNumber' => $phone,
+            'CallBackURL' => 'https://a884-41-80-22-220.ngrok.io',
+            'AccountReference' => "Rental",
+            'TransactionDesc' => "Testing stk push on sandbox"
+        ];
+        $data_string = json_encode($curl_post_data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-        curl_close($curl);
         return $curl_response;
     }
+
+    public function generateAccessToken()
+    {
+        $consumer_key= "OneW9Z7Id2tRiEQiVz2JsMj3iuqcjtwV";
+        $consumer_secret= "73AeO11ViwlrjvJj";
+        $credentials = base64_encode($consumer_key.":".$consumer_secret);
+        $url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Basic ".$credentials));
+        curl_setopt($curl, CURLOPT_HEADER,false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl_response = curl_exec($curl);
+        $access_token=json_decode($curl_response);
+        return $access_token->access_token;
+    }
+  
 }
