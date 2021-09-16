@@ -1,4 +1,10 @@
 <?php
+use App\Http\Controllers\TaskController;
+use App\Models\Role;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::view('/', 'welcome');
 Auth::routes();
