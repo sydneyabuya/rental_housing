@@ -24,6 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - run: composer update
       - run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
       - run: ./vendor/bin/phpcs --standard=./phpcs.xml --extensions=php app
       - run: yarn install
