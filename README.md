@@ -62,13 +62,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Pages
-Login
+- **Login
 ![loginapprove](https://user-images.githubusercontent.com/69866777/166459472-6a66e6a9-5938-4e97-a9c6-d17ac32f9a25.PNG)
-Registration
+- **Registration
 ![registration](https://user-images.githubusercontent.com/69866777/166459847-b2d89a23-9166-4f8f-9968-708900f0262c.PNG)
-Landlord Dashboard
+- **Landlord Dashboard
 ![landlord dash](https://user-images.githubusercontent.com/69866777/166459765-11055e75-5ff5-40a3-b0ee-0c4f1f26394d.PNG)
-Tenant Dashboard
+- **Tenant Dashboard
 ![tenant dash](https://user-images.githubusercontent.com/69866777/166459881-819ccfef-e702-4170-b0e0-aae4dd9970c1.PNG)
-Make an application
+- **Make an application
 ![makeapplication](https://user-images.githubusercontent.com/69866777/166459806-96139cde-555e-42c6-8102-9405394d265b.PNG)
