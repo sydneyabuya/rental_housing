@@ -71,7 +71,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 - Run the `composer install` command to install all of the required PHP packages for the project.
 
-- Set the necessary environment variables by copying the `.env.example` file to a new file called `.env` and filling in the appropriate values for your local development environment.
+- Set the necessary environment variables by copying the `.env.example` file to a new file called `.env` and filling in the appropriate values for your local development environment.`cp .env.example .env`
 
 - Generate an application key for your Laravel app by running the `php artisan key:generate` command.
 
