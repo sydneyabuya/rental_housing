@@ -61,6 +61,28 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## How to set up the Reantal Management Application
+
+Make sure you have the necessary dependencies installed on your local machine, including PHP, Composer, and a web server like Apache or Nginx.
+
+Use Git to clone the Laravel app repository from Bitbucket to your local machine.
+
+Navigate to the root directory of the cloned project using a terminal or command prompt.
+
+Run the composer install command to install all of the required PHP packages for the project.
+
+Set the necessary environment variables by copying the .env.example file to a new file called .env and filling in the appropriate values for your local development environment.
+
+Generate an application key for your Laravel app by running the php artisan key:generate command.
+
+Set up your local database by creating a new database and updating the DB_DATABASE, DB_USERNAME, and DB_PASSWORD values in your .env file.
+
+Run the php artisan migrate command to run any database migrations and set up the necessary tables in your database.
+
+Start the development server by running the php artisan serve command.
+
+Open a web browser and navigate to the URL displayed in the terminal to view your Laravel app. This will typically be something like http://127.0.0.1:8000.
+
 ## Pages
 
 - Login
