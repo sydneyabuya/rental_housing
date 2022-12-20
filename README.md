@@ -61,7 +61,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## How to set up the Reantal Management Application
+## How to set up the Rental Management Application
 
 - Make sure you have the necessary dependencies installed on your local machine, including PHP, Composer, and a web server like Apache or Nginx.
 
