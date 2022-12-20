@@ -69,17 +69,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 - Navigate to the root directory of the cloned project using a terminal or command prompt.
 
-- Run the composer install command to install all of the required PHP packages for the project.
+- Run the `composer install` command to install all of the required PHP packages for the project.
 
-- Set the necessary environment variables by copying the .env.example file to a new file called .env and filling in the appropriate values for your local development environment.
+- Set the necessary environment variables by copying the `.env.example` file to a new file called `.env` and filling in the appropriate values for your local development environment.
 
-- Generate an application key for your Laravel app by running the php artisan key:generate command.
+- Generate an application key for your Laravel app by running the `php artisan key:generate` command.
 
-- Set up your local database by creating a new database and updating the DB_DATABASE, DB_USERNAME, and DB_PASSWORD values in your .env file.
+- Set up your local database by creating a new database and updating the DB_DATABASE, DB_USERNAME, and DB_PASSWORD values in your `.env` file.
 
-- Run the php artisan migrate command to run any database migrations and set up the necessary tables in your database.
+- Run the `php artisan migrate` command to run any database migrations and set up the necessary tables in your database.
 
-- Start the development server by running the php artisan serve command.
+- Start the development server by running the `php artisan serve` command.
 
 - Open a web browser and navigate to the URL displayed in the terminal to view your Laravel app. This will typically be something like http://127.0.0.1:8000.
 
